@@ -1,0 +1,13 @@
+<a routerLink="/viewcart/{{this.user.id}}">
+
+  <div *ngIf="this.anyItem > 0" class="d-flex justify-content-end align-items-center position-fixed z-index-position">  
+    <div class="position-fixed">
+    <div class="cart-div">
+      <fa-icon class="cart-icon" [icon]="cartIcon" />
+      <span class="position-absolute pt-1 top-0 start-0 badge rounded-pill bg-success fw-bold">
+        {{this.anyItem}}
+      </span>
+    </div>
+  </div>  
+</div>
+</a>

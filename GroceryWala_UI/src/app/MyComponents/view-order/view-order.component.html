@@ -1,0 +1,115 @@
+<div class="d-flex justify-content-center align-items-center" id="order-heading">
+
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="text-uppercase font-monospace">
+      <p>Order detail</p>
+    </div>
+    <div class="h4">{{this.orderDetails.createdAt | date}}</div>
+    <div class="py  -1 font-monospace">
+      <div class="font-monospace fw-bold h6">Order #{{this.orderDetails.orderId}} is
+        <b class="text-success font-monospace h6"> delivered
+        </b>
+      </div>
+    </div>
+
+    <!-- Close Button -->
+    <!-- <div class="btn close text-white"> &times; </div> -->
+
+  </div>
+</div>
+<div class="wrapper bg-white border wrapper-border">
+  <div class="">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="text-uppercase text-muted text-center ">
+          <th scope="col">#Id</th>
+          <th scope="col">product</th>
+          <th scope="col">price</th>
+          <th scope="col">quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center " *ngFor="let product of this.productsOrders">
+          <th scope="row pb-0">{{product.productId}}</th>
+          <th scope="row">
+          <div class="d-flex justify-content-start">
+            <div class="mx-2">
+              <img src={{product.imageAddress}} alt="{{product.productId}}" alt="apple" class="rounded-circle"
+                width="30" height="30">
+            </div>
+            <div class="">{{product.name}}</div>
+          </div>
+          </th>
+          <th scope="row">
+            <fa-icon [icon]="rupeeIcon" />
+            {{returnPrice(product.price, product.discount)}}
+          </th>
+          <th scope="row">{{product.productQuantity}}</th>
+          <th scope="row"><fa-icon [icon]="rupeeIcon" /> 
+            {{returnPrice(product.price, product.discount)*product.productQuantity}}
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pt-2 border-bottom mb-3"></div>
+  <div class="d-flex justify-content-between align-items-center ps-3">
+    <div class="text-muted">Payment Method</div>
+    <div class=""> <img src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-logok-15.png" alt=""
+        width="30" height="30"> <label>Mastercard ******5342</label> </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center py-1 ps-3">
+    <div class="text-muted">Delivery Fee</div>
+    <div class=""> <label><fa-icon [icon]="rupeeIcon" /> 100</label> </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center py-1 ps-3">
+    <div class="text-muted">
+      Discount On MRP
+    </div>
+    <div class=" price">
+      - <fa-icon [icon]="rupeeIcon" /> {{this.orderDetails.discountOnMRP}}
+    </div>
+  </div>
+  <div *ngIf="this.orderDetails.couponCode != ''"
+    class="d-flex justify-content-between align-items-center pt-1 pb-4 ps-3 border-bottom">
+    <div class="text-muted">
+      Extra Discount
+      <span class="font-monospace fw-bold">
+        ({{this.orderDetails.couponCode}})
+      </span>
+    </div>
+    <div class=" price"> - <fa-icon [icon]="rupeeIcon" /> {{this.orderDetails.extraDiscount}} </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center ps-3 py-3 mb-4 border-bottom">
+    <div class="text-muted fw-bold h5"> Final Amount</div>
+    <div class="h5 fw-bold"> <fa-icon [icon]="rupeeIcon" /> {{this.orderDetails.finalAmount}} </div>
+  </div>
+  <div class="row border rounded p-2 my-3">
+    <div class="col-md-6 py-3 px-3">
+      <div class="d-flex flex-column align-items start"> <b>Billing Address</b>
+        <p class="text-justify pt-2 text-muted">13, Sub.Major Laxmi Chand Rd, Maruti Udyog, Sector 18, Gurugram </p>
+        <p class="text-justify text-muted">Haryana 122015</p>
+      </div>
+    </div>
+    <div class="col-md-6 py-3">
+      <div class="d-flex flex-column align-items start px-3"> <b>Shipping Address</b>
+        <p class="text-justify pt-2 text-muted">Plot No A-28 Mohan cooperative Industrial Estate
+          Mathura Road</p>
+        <p class="text-justify text-muted">Delhi - 110044</p>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between">
+    <div>
+
+      <p>We will be sending shipping confirmation email when the item shipped successfully!</p>
+      <p class="fw-bold mb-0">Thanks for shopping with us!</p>
+      <span>Grocery Wala Team</span>
+    </div>
+    <div>
+      <img src="../../../assets/paid.png" alt="paid" class="paid">
+    </div>
+  </div>
+</div>

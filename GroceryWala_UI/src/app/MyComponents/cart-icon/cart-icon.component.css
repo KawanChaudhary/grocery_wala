@@ -1,0 +1,21 @@
+
+.z-index-position{
+    background-color: #000000;  
+    top: 52%;
+    height: 50px;
+    width: 60px;
+    z-index: 1000;
+    border-radius: 0 50px 50px 0;   
+}
+
+.cart-div{    
+    background-color: aliceblue;
+    margin: 6px;
+    border-radius: 30px;
+}
+
+.cart-icon{
+    padding: 5px;
+    font-size: 25px;
+    color: #000000;
+}

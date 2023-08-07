@@ -1,0 +1,169 @@
+<!-- Sign up form -->
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign Up</h2>
+                <form class="register-form" id="register-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="FirstName">
+                            <fa-icon [icon]="userIcon"></fa-icon>
+                        </label>
+                        <input type="text" id="FirstName" formControlName="FirstName" placeholder="Your First Name"
+                            required />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LastName">
+                            <fa-icon [icon]="userIcon"></fa-icon>
+                        </label>
+                        <input type="text" formControlName="LastName" id="LastName" placeholder="Your Last Name"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            <fa-icon [icon]="emailIcon"></fa-icon>
+                        </label>
+                        <input type="email" formControlName="Email" id="Email" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="PhoneNumber">
+                            <fa-icon [icon]="phoneIcon"></fa-icon>
+                        </label>
+                        <input type="number" formControlName="PhoneNumber" id="PhoneNumber"
+                            placeholder="Your Mobile Number" onKeyPress="if(this.value.length==10) return false;" required />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">
+                            <fa-icon [icon]="passwordIcon"></fa-icon>
+                        </label>
+
+                        <input [type]="viewPassword ? 'text' : 'password'" formControlName="Password" id="Password"
+                            placeholder="Your Password" required />
+
+                    </div>
+                    <div class="form-group">
+
+                        <div class="flex-nowrap input-group d-flex justify-content-end">
+                            <label for="ConfirmPassword">
+                                <fa-icon [icon]="confirmPasswordIcon"></fa-icon>
+                            </label>
+                            <input [type]="viewPassword ? 'text' : 'password'" formControlName="ConfirmPassword"
+                                id="ConfirmPassword" placeholder="Confirm Password" required />
+                            <div class="input-group-text border-0 bg-white ">
+                                <fa-icon aria-disabled="!f['Password'].valid"
+                                    [icon]="this.viewPassword ? eyeIcon  : eyeSlashIcon"
+                                    (click)="toggleFieldTextType()" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group form-button">
+                        <button type="submit" [disabled]="!signUpForm.valid" class="py-2 px-3 btn btn-outline-danger">
+                            Create An Account    
+                        </button>
+                    </div>
+                    <div>
+
+                        <a routerLink="/signin" class=" text-success">I'm already a member.</a>
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="./../../../assets/images/signup-image.jpg" alt="sing up image"></figure>
+
+                <!-- First Name validation -->
+                <div *ngIf="f['FirstName'].touched && f['FirstName'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['FirstName'].errors && f['FirstName'].errors['required']">
+                        <span class="dot"> </span>
+                        First Name is required.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['FirstName'].errors && f['FirstName'].errors['minLength']">
+                        <span class="dot"> </span>
+                        FullName should not exceed 50 alphabets.
+                    </div>
+                </div>
+
+                <!-- Email validation -->
+
+                <div *ngIf="f['Email'].touched && f['Email'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center" *ngIf="f['Email'].errors && f['Email'].errors['required']">
+                        <span class="dot"> </span>
+                        Email is required.
+                    </div>
+                    <div class=" d-flex align-items-center" *ngIf="f['Email'].errors && f['Email'].errors['pattern']">
+                        <span class="dot"> </span>
+                        Please provide a valid email address.
+                    </div>
+                </div>
+
+                <!-- Phone Number validation -->
+
+                <div *ngIf="f['PhoneNumber'].touched && f['PhoneNumber'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['PhoneNumber'].errors && f['PhoneNumber'].errors['required']">
+                        <span class="dot"> </span>
+                        Phone Number is required.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        ng-If="(f['PhoneNumber'].errors && f['PhoneNumber'].errors['pattern']) && 
+                        (f['PhoneNumber'].errors && f['PhoneNumber'].errors['minlength']) &&
+                        (f['PhoneNumber'].errors && f['PhoneNumber'].errors['maxLength'])">
+                        <span class="dot"> </span>
+                        Phone Number should be 10 digits.
+                    </div>
+                </div>
+
+                <!-- Password validation -->
+
+                <div *ngIf="f['Password'].touched && f['Password'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['required']">
+                        <span class="dot"> </span>
+                        Password is required.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['minLength']">
+                        <span class="dot"> </span>
+                        Password should be at least 8 characters long.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['specialCharacter']">
+                        <span class="dot"> </span>
+                        Password should contain at least 1 special character.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['number']">
+                        <span class="dot"> </span>
+                        Password should contain at least 1 number.  
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['alphabet']">
+                        <span class="dot"> </span>
+                        Password should contain at least 1 alphabet.
+                    </div>
+                </div>
+
+                <!-- Confirm Password Validation -->
+
+                <div *ngIf="f['ConfirmPassword'].touched && f['ConfirmPassword'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['ConfirmPassword'].errors && f['ConfirmPassword'].errors['required']">
+                        <span class="dot"> </span>
+                        Confirm Password is required.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['ConfirmPassword'].errors && f['ConfirmPassword'].errors['mismatch']">
+                        <span class="dot"> </span>
+                        Passwords do not match.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

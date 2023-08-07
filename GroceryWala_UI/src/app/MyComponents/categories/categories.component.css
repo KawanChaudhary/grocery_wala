@@ -1,0 +1,27 @@
+.icon-hover:hover {
+  border-color: #ffffff !important;
+  background-color: rgb(182, 70, 70) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+.icon-hover {
+  font-size: 35px;
+  color: rgb(182, 70, 70);
+}
+
+.underline a {
+  color: ff0000;
+  text-decoration: none;
+}
+
+.text-category {
+  color: rgb(119, 119, 109);
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+}

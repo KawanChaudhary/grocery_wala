@@ -1,0 +1,17 @@
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DataServiceLayer.deps.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DataServiceLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\ref\GroceryWala.DataServiceLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DataServiceLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DataAccessLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DataAccessLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\bin\Release\net5.0\GroceryWala.DomainLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.AssemblyInfoInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.AssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.csproj.CopyComplete
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\ref\GroceryWala.DataServiceLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\GroceryWala.ServiceLayer\obj\Release\net5.0\GroceryWala.DataServiceLayer.pdb

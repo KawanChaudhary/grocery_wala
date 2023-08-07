@@ -1,0 +1,12 @@
+
+<input
+	id="typeahead-format"
+	type="text"
+	class="form-control form-control-dark bg-light"
+    #searchBar
+	[ngbTypeahead]="search"
+    [inputFormatter]="formatter"
+	[resultFormatter]="formatter"
+    (selectItem)="onSelect($event); searchBar.value = ''"
+    placeholder="Search..."
+/>

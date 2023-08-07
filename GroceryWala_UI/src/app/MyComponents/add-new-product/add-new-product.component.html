@@ -1,0 +1,131 @@
+<div class="mx-5 mt-4 row">
+    <h2 class="font-monospace text-muted fw-bold">Add New Product</h2>
+    <hr />
+    <div class="col-xs-12 col-md-6 col-lg-6 overflow-hidden">
+        <form class="row needs-validated" ngNativeValidate #addProduct = "ngForm" (ngSubmit) = "onSubmit(addProduct.value)">
+            <div class="my-3 col-md-12">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" #name ngModel
+                    placeholder="Enter Product Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text fw-bold" id="inputGroupPrepend2">
+                        <fa-icon [icon]="rupeeIcon" />
+                    </span>
+                    <input type="number" min="0" class="form-control" placeholder="0.00" id="price" name="price"
+                        aria-describedby="inputGroupPrepend2" name="price" #price ngModel required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Discount</label>
+                <div class="input-group">
+                    <span class="input-group-text fw-bold" id="inputGroupPrepend2">
+                        <fa-icon [icon]="percentageIcon" />
+                    </span>
+                    <input type="number" min="0" max="100" placeholder="100 %" class="form-control" id="discount"
+                        name="discount" ngModel aria-describedby="inputGroupPrepend2">
+                </div>
+            </div>
+            <div class="my-3 col-md-6">
+                <label class="form-label">Stock</label>
+                <div class="input-group">
+                    <span class="input-group-text fw-bold" id="inputGroupPrepend2">
+                        <fa-icon [icon]="stockIcon" />
+                    </span>
+                    <input type="number" min="0" placeholder="0" name="stock" ngModel
+                        class="form-control" id="stock" required aria-describedby="inputGroupPrepend2">
+                </div>
+            </div>
+            <div class="my-3 col-md-6">
+                <label class="form-label">Quantity</label>
+                <div class="input-group">
+                    <span class="input-group-text fw-bold" id="inputGroupPrepend2">
+                        <fa-icon [icon]="quantityIcon" />
+                    </span>
+                    <input type="number" min="0" placeholder="0" name="quantity" ngModel
+                        class="form-control" id="quantity" aria-describedby="inputGroupPrepend2">
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label class="form-label">Type
+                    <span class="text-muted fst-italic small">(kg/g/L/ml)</span>
+                </label>
+                <select class="form-select" name="sizeType" #sizeType ngModel required
+                    aria-label="select example">
+                    <option [ngValue]="0">Kilo Gram (kg)</option>
+                    <option [ngValue]="1">Gram (g)</option>
+                    <option [ngValue]="2">Litres (L)</option>
+                    <option [ngValue]="3">Millilitre (ml)</option>
+                </select>
+                <div class="invalid-feedback">Example invalid select feedback</div>
+            </div>
+
+
+            <div class="">
+                <label class="form-label">Description
+                    <span class="text-muted fst-italic small">(Max. 255 words)</span>
+                </label>
+                <textarea class="form-control" id="description" placeholder="Write something about product." required
+                    data-gramm="false" minlength="1" maxlength="255" name="description" #description ngModel wt-ignore-input="true">
+                </textarea>
+                <div class="invalid-feedback">
+                    Please enter a message in the textarea.
+                </div>
+            </div>
+
+            <div class="my-3">
+                <label class="form-label">Choose Category</label>
+                <select class="form-select" required name="category" #category ngModel
+                    aria-label="select example">
+                    <option [ngValue]="0">Fruits & Vegetables</option>
+                    <option [ngValue]="1">Dairy & Bakery</option>
+                    <option [ngValue]="2">Snacks</option>
+                    <option [ngValue]="3">Beverages</option>
+                    <option [ngValue]="4">Frozen Foods</option>
+                    <option [ngValue]="5">Condiments</option>
+                    <option [ngValue]="6">Cleaning Supplies</option>
+                    <option [ngValue]="7">Personal Care</option>
+                </select>
+                <div class="invalid-feedback">Example invalid select feedback</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Product Image
+                    <span class="text-muted fst-italic small">(PNG or JPG)</span>
+                </label>
+                <input type="file" #inputFile class="form-control" (change)="onFileSelected($event)" multiple
+                    name="Image" accept="image/png, image/jpeg, image/jpg" required>
+                <div class="invalid-feedback">Example invalid form file feedback</div>
+            </div>
+
+            <!-- Other Specifications -->
+
+            <div class="">
+                <label class="form-label">Other Specification:
+                    <span class="text-muted fst-italic small">(Max. 100 words)</span>
+                </label>
+                <textarea class="form-control" id="otherDetails" placeholder="Write other details..."
+                    data-gramm="false" minlength="1" maxlength="100" name="otherDetails" ngModel #otherDetails wt-ignore-input="true">
+                </textarea>
+            </div>
+
+            <div class="showInputField"></div>
+
+            <!-- The add() function is called -->
+
+            <div class="my-3">
+                <button class="btn btn-success" type="submit">Add Product</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <img class="img-fluid float-end" src="./../../../assets/images/Other/addproduct.jpg" />
+    </div>
+</div>

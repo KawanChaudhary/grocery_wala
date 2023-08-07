@@ -1,0 +1,52 @@
+.bg-overlay {
+    color: #ffffff;
+    height: 150px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+
+.card {
+    position: relative;
+  }
+
+  
+  
+  .absolute-data {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: rgb(210, 147, 65);
+  }
+  
+
+.bg-overlay-0 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img0);
+}
+
+.bg-overlay-1 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img1);
+}
+.bg-overlay-2 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img2);
+}
+.bg-overlay-3 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img3);
+}
+
+.bg-overlay-4 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img4);
+}
+
+.bg-overlay-5 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img5);
+}
+.bg-overlay-6 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img6);
+}
+
+.bg-overlay-7 {
+    background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), var(--img7);
+}

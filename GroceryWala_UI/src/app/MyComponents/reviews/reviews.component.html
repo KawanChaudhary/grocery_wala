@@ -1,0 +1,61 @@
+<!-- Rate the product -->
+
+<div *ngIf="this.currentRate == 0" class="h4 text-black mx-2 my-3">Please rate this product: </div>
+<div *ngIf="this.currentRate > 0" class="h4 text-success mx-2 my-3">
+    <fa-icon class="text-success" [icon]="checkIcon" />
+    Rated by you: 
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+
+    <ngb-rating [(ngModel)]="this.currentRate" (click)="updateRating()" [(rate)]="this.currentRate" [max]="5">
+        <ng-template let-fill="fill" let-index="index">
+            <fa-icon  [icon]="starIcon" class="h4 mx-2 " [class.filled]="fill === 100" />
+        </ng-template>
+    </ngb-rating>
+</div>
+
+<hr />
+
+<!-- Comment on product -->
+
+<div class="container">
+    <div class="d-flex justify-content-center row">
+        <!-- No. of comments on this product -->
+
+        <div class="h4 text-danger me-2">Customer Reviews ({{this.allComments.length}}) </div>
+
+        <div class="coment-bottom bg-white p-2 px-4">
+            <form class="d-flex flex-row add-comment-section mt-4 mb-4" ngNativeValidate>
+                <img class="img-fluid img-responsive rounded-circle me-2" src="./../../../assets/images/Other/user.jpg"
+                    width="38">
+
+                <input type="text" class="form-control me-3"
+                    [placeholder]="this.user.id == '' ? 'Sign in to add comment' : 'Add Comment'"
+                    [disabled]="this.user.id == ''" #comment ngNativeValidate required />
+
+                <button routerLink="/signin" *ngIf="this.user.id == ''" class="btn btn-danger w-25" type="button">
+                    Sign In
+                </button>
+                <button (click)="addNewComment(comment)" *ngIf="this.user.id != ''" class="btn btn-danger w-25"
+                    type="submit">Comment</button>
+            </form>
+            <div class="overflow-auto">
+                <div class="commented-section mt-2" *ngFor="let comment of this.allComments">
+                    <div class="d-flex flex-row align-items-center commented-user">
+                        <h5 class="me-2">{{comment.firstName + " " + comment.lastName}}</h5>
+                        <span class="dot mb-1"></span>
+                        <span class="mb-1 ms-2">{{comment.createdAt | timeAgo}}</span>
+                    </div>
+                    <div class="comment-text-sm mx-2">
+                        <span class="text-muted">
+                            {{comment.text}}
+                        </span>
+                    </div>
+                    <hr class="mx-1" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

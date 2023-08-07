@@ -1,0 +1,99 @@
+<section class="text-center bg-light">
+
+  <div class="bg-overlay">
+
+    <div class="text-center">
+      <h1 class="welcome display-4 font-monospace color">{{returnCategoryType(this.category)}}</h1>
+      <p class="fs-3  color font-monospace fst-italic">
+        --- Har Din Sasta ---
+      </p>
+    </div>
+  </div>
+</section>
+<app-categories />
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+
+
+  <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+    <div *ngFor="let product of this.allProducts | paginate: {
+          itemsPerPage: 12,
+          currentPage: this.pagination,
+          totalItems: this.allProductsCount
+        };
+        let idx = index;
+        ">
+      <div class="col hp">
+        <div class="card h-100 shadow-sm">
+          <a routerLink="/viewproduct/{{this.product.details.id}}">
+            <img src={{product.images.imageAddress}} class="card-img-top" alt="product.title" />
+
+            <div class="label-top-left shadow-sm">
+              <span class="fw-bold">
+                3.8
+                <fa-icon [icon]="starIcon" />
+              </span>
+            </div>
+
+            <div *ngIf="product.details.discount > 0 && product.details.stock > 0" class="label-top shadow-sm">
+              <span class="fw-bold">{{product.details.discount}}% OFF</span>
+            </div>
+          </a>
+
+          <div class="card-body">
+            <div class="label-down-right shadow-sm text-center ">
+              <span class="fw-bold">{{returnCategoryType(product.details.category)}}</span>
+            </div>
+            <div class="clearfix mb-3">
+              <span class="float-start badge rounded-pill bg-success">
+                <fa-icon [icon]="rupeeIcon" />
+                {{returnPrice(product.details.price, product.details.discount)}}
+              </span>
+
+              <span class="float-end fw-bold text-muted fst-italic">
+                {{product.details.quantity + " " + returnSizeType(product.details.sizeType) }}
+              </span>
+            </div>
+            <h5 class="card-title">
+              <span class="fw-bold h6 ">{{product.details.name}}</span>
+            </h5>
+
+
+            <div class="d-grid gap-2 my-2">
+
+              <button *ngIf="product.isInCart == false && product.details.stock > 0"
+                (click)="addToCart(product.details, idx)" class="btn btn-outline-success bold-btn">
+                add to cart
+              </button>
+              <button *ngIf="product.isInCart == true && product.details.stock > 0" routerLink="/viewcart/{{this.user.id}}"
+                class="btn btn-danger bold-btn">
+                go to cart
+              </button>
+
+                <button *ngIf="product.details.stock <= 0" class="btn btn-secondary bold-btn">
+                  Out Of stock
+                </button>
+
+            </div>
+
+
+
+            <div class="clearfix mb-1">
+
+              <span class="float-start"><a href="#"><i class="fas fa-question-circle"></i></a></span>
+
+              <span class="float-end">
+                <i class="far fa-heart" style="cursor: pointer"></i>
+
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="this.allProductsCount > 12 || this.pagination > 1" class="d-flex justify-content-center mt-5">
+    <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+  </div>
+</div>

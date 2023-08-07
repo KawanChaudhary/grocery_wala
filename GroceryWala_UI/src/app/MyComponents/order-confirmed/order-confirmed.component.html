@@ -1,0 +1,16 @@
+<div class="d-flex flex-column justify-content-center align-items-center m-auto">
+    <div>
+        <ng-lottie class="animation" height="auto" [options]="options"></ng-lottie>
+    </div>
+
+    <div>
+        <h2 class="font-monospace fw-bold">Order Confirmed #{{this.orderId}}</h2>
+    </div>
+    <div class="my-3">
+        <a routerLink="/" class="btn btn-outline-secondary mx-2">Back To Home</a>
+        <a target="_blank" routerLink="/vieworder/{{this.userId}}/{{this.orderId}}" class="btn btn-outline-danger mx-2">
+            View Order Details
+        </a>
+    </div>
+
+</div>

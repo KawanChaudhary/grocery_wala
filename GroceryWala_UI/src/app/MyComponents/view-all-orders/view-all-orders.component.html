@@ -1,0 +1,77 @@
+<div class="container-fluid pt-5">
+
+    <div class="d-flex justify-content-between mx-5 align-items-center">
+        <div class="col-md-6">
+            <div class="heading-section font-monospace display-4 text-uppercase">
+                All Orders
+            </div>
+        </div>
+        <!-- Price sorting -->
+      <div class="dropdown">
+        <div class="btn btn-dark dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Sort By
+        </div>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li><a class="dropdown-item" (click)="applySorting('Default')">Default</a></li>
+          <li><a class="dropdown-item" (click)="applySorting('Price', 'Up')">Price Ascending</a></li>
+          <li><a class="dropdown-item" (click)="applySorting('Price', 'Down')">Price Descending</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="mt-0 mx-4" />
+    <section class="ftco-section">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>#Id</th>
+                                    <th>User Id</th>
+                                    <th>Order Date</th>
+                                    <th>Payment</th>
+                                    <th>Total MRP</th>
+                                    <th>Final Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of this.sortedData | paginate: {
+                                    itemsPerPage: 11,
+                                    currentPage: this.pagination,
+                                    totalItems: this.allOrdersCount
+                                  };
+                                  let idx = index;" class="text-center row-hover">
+
+                                    <th scope="row">{{order.orderId}}</th>
+                                    <td>{{order.userId}}</td>
+                                    <td>{{order.createdAt | date}}</td>
+                                    <td>Card</td>
+                                    <td>
+                                        {{order.totalMRP | currency: 'INR'}}
+                                    </td>
+                                    <td>
+                                        {{order.finalAmount | currency: 'INR'}}
+                                    </td>
+                                    <td>
+                                        <div class="text-success fw-bold">Delivered</div>
+                                    </td>
+                                    <td>
+                                        <a routerLink="/vieworder/{{order.userId}}/{{order.orderId}}" target="_blank"
+                                            class="btn btn-outline-danger btn-sm">
+                                            Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

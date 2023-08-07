@@ -1,0 +1,72 @@
+<!-- Sing in  Form -->
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+                <figure><img src="./../../../assets/images/signin-image.jpg" alt="sing up image"></figure>        
+                
+                <!-- Email Validation -->
+
+                <div *ngIf="f['Email'].touched && f['Email'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center" *ngIf="f['Email'].errors && f['Email'].errors['required']">
+                        <span class="dot"> </span>
+                        Email is required.
+                    </div>
+                    <div class=" d-flex align-items-center" *ngIf="f['Email'].errors && f['Email'].errors['pattern']">
+                        <span class="dot"> </span>
+                        Please provide a valid email address.
+                    </div>
+                </div>
+
+                <div *ngIf="f['Password'].touched && f['Password'].invalid" class="small text-danger">
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['required']">
+                        <span class="dot"> </span>
+                        Password is required.
+                    </div>
+                    <div class=" d-flex align-items-center"
+                        *ngIf="f['Password'].errors && f['Password'].errors['minlength']">
+                        <span class="dot"> </span>
+                        Password should be 5 characters.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Sign In</h2>
+                <form class="register-form" id="login-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="your_name">
+                            <fa-icon [icon]="emailIcon"></fa-icon>
+                        </label>
+                        <input type="text" formControlName="Email" id="Email" placeholder="Your Email" required/>
+                    </div>
+                    <div class="form-group">
+                        
+                        <div class="flex-nowrap input-group d-flex justify-content-end">                            
+                            <label for="your_pass">
+                                <fa-icon [icon]="passwordIcon"></fa-icon>
+                            </label>
+                            
+                        <input [type]="viewPassword ? 'text' : 'password'" formControlName="Password" 
+                                id="Password" placeholder="Password" required/>
+
+                            <div class="input-group-text border-0 bg-white ">
+                                <fa-icon aria-disabled="!f['Password'].valid"
+                                    [icon]="this.viewPassword ? eyeIcon  : eyeSlashIcon"
+                                    (click)="toggleFieldTextType()" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-button mt-5">
+                        <button type="submit" name="signin" [disabled]="!signInForm.valid" class="py-2 px-4 btn btn-outline-success">Sign In</button>
+                    </div>
+                    <div>
+                        <a routerLink="/signin" class="text-danger">Create an account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

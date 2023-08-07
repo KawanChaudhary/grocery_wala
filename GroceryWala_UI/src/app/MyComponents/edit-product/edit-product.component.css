@@ -1,0 +1,33 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cursor-pointer{
+  cursor:pointer;
+}
+
+.img-class{
+  max-width: 100px!important;
+  max-height: 100px!important;
+  cursor: pointer;
+}
+
+.img-class:hover{
+  border-color: red;
+}
+
+.image-container {
+  position: relative;
+}
+
+.delete-button {
+  display: none;
+}
+
+.image-container:hover .delete-button {
+  display: block;
+}
+
+

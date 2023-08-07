@@ -1,0 +1,20 @@
+.bg-gradient{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5));
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  outline: black;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  color: rgb(62, 59, 59);
+}
+
+.carousel-control-prev-icon:after {
+  color: rgb(62, 59, 59);
+}

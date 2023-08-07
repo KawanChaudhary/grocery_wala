@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card border-0">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-4" *ngFor="let offer of this.allOffers">
+                    <div>
+                        <fa-icon [icon]="giftIcon" style="font-size: 40px;" class="rounded-circle text-danger" />
+                    </div>
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1">{{offer.offerCode}}</p>
+                        <p class="text-muted mb-0 small">{{offer.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

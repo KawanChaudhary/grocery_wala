@@ -1,0 +1,230 @@
+<!-- content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row gx-5">
+            <aside class="col-lg-6">
+
+                <!-- Main Image -->
+                <div class="border rounded-4 mb-3 d-flex justify-content-center">
+                    <span data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image">
+                        <img class="rounded-4 fit img-fluid img-main"
+                            src={{images[this.currentImageIndex].imageAddress}} />
+                    </span>
+                </div>
+
+                <!-- gallery-wrap start -->
+                <div class="d-flex justify-content-center mb-3">
+                    <span *ngFor="let image of images; let i = index" data-fslightbox="mygalley"
+                        class="cursor border rounded-1 me-2 p-1 on-hover">
+                        <img width="60" height="60" class="rounded-2 on-hover" src={{image.imageAddress}}
+                            (click)="changeImage(i)" />
+                    </span>
+
+                </div>
+                <!-- gallery-wrap end -->
+            </aside>
+            <main class="col-lg-6">
+                <div class="ps-lg-3">
+                    <!-- Category -->
+                    <h6 class="text-danger fw-bold mt-3">{{returnCategoryType(this.product.category)}}</h6>
+                    <span class="d-flex align-items-center">
+                        <h4 class="title text-dark">
+                            {{this.product.name}}
+                        </h4>
+                    </span>
+                    <div *ngIf="this.product.stock > 0" class="text-success fw-bold">In stock</div>
+
+                    <!-- Rating and In-Stock start -->
+                    <div class="d-flex align-items-center my-2">
+                        <div class="rounded-4  rating-bg ">
+
+                            <ng-template #t let-fill="fill">
+                                <fa-icon class="small fa-icon-class" [icon]="starIcon">
+                                    <fa-icon [icon]="starIcon" *ngIf="fill > 0" class="filled "
+                                        [style.width.%]="fill" />
+                                </fa-icon>
+                            </ng-template>
+
+                            <ngb-rating (rate)="this.returnRating(this.product.rating, this.product.totalRatings)"
+                                [starTemplate]="t" [readonly]="true" [max]="5"
+                                [ariaValueText]="ariaValueText"></ngb-rating>
+                            <span class="mx-1 fw-bold">{{this.returnRating(this.product.rating,
+                                this.product.totalRatings)}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Rating and In-Stock end -->
+
+                    <!-- MRP - Price - Discount Start -->
+                    <span *ngIf="this.product.stock > 0;else elseStock">
+
+
+
+                        <div *ngIf="this.product.discount > 0" class="mb-2">
+                            <span class="text-black-50 fw-bold">MRP: </span>
+                            <span class="fw-bold text-black-50 text-decoration-line-through">
+                                <fa-icon [icon]="rupeeIcon" />
+                                {{this.product.price}}
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="text-black-50 fw-bold h5">Price: </span>
+                            <span class="h5 fw-bold text-black">
+                                <fa-icon [icon]="rupeeIcon" />
+                                {{returnPrice(this.product.price, this.product.discount)}}
+                            </span>
+                            <span class="fw-bold text-black-50">/per {{this.product.quantity + " " +
+                                returnSizeType(this.product.sizeType)}}</span>
+                        </div>
+
+                        <div *ngIf="this.product.discount > 0" class="mb-3">
+                            <Span class=" bg-discount">
+
+                                <span class="text-black-50">You Save: </span>
+                                <span class="fw-bold off-color">
+                                    {{this.product.discount}}% OFF
+                                </span>
+                            </Span>
+                        </div>
+                    </span>
+
+                    <ng-template #elseStock>
+                        <h4 class="text-danger my-5">Out Of Stock</h4>
+                    </ng-template>
+
+                    <!-- MRP - Price - Discount End -->
+
+                    <!-- Description -->
+
+                    <p>
+                        {{this.product.description}}
+                    </p>
+
+                    <hr />
+
+                    <!-- Choose Quantity of product start -->
+                    <span *ngIf="this.product.stock > 0">
+                        <div class="row mb-4">
+                            <div class="col-md-4 col-6 mb-3">
+                                <label class="mb-2 d-block">Quantity</label>
+                                <div class="">
+                                    <select style="width: 80px;" class="form-select me-4"
+                                        (change)="changeQuantity(this.cartItem)" [(ngModel)]="this.cartItem.quantity">
+                                        <option *ngIf="this.product.stock > 0" [ngValue]="1">1</option>
+                                        <option *ngIf="this.product.stock > 1" [ngValue]="2">2</option>
+                                        <option *ngIf="this.product.stock > 2" [ngValue]="3">3</option>
+                                        <option *ngIf="this.product.stock > 3" [ngValue]="4">4</option>
+                                        <option *ngIf="this.product.stock > 4" [ngValue]="5">5</option>
+                                        <option *ngIf="this.product.stock > 5" [ngValue]="6">6</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Choose Quantity of product end -->
+
+                        <!-- Add to cart button -->
+                        <button *ngIf="this.isInCart == false" (click)="addToCart(this.product)"
+                            class="btn text-uppercase btn-outline-danger shadow-0">
+                            <fa-icon class="me-2" [icon]="shoppingBasketIcon" />
+                            Add to cart
+                        </button>
+                        <button routerLink="/viewcart/{{this.user.id}}" *ngIf="this.isInCart == true"
+                            class="btn text-uppercase btn-danger shadow-0">
+                            Go to cart
+                        </button>
+                    </span>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+<!-- content -->
+
+<section class="bg-light border-top py-4">
+    <div class="container">
+        <div class="row gx-4">
+            <div class="col-lg-8 mb-4">
+                <div class="border rounded-2 px-3 py-2 bg-white">
+                    <!-- Pills navs -->
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+
+                        <!-- App Rating Review -->
+                        <li [ngbNavItem]="1">
+                            <button ngbNavLink>Rating & Review</button>
+                            <ng-template ngbNavContent>
+                                <app-reviews />
+                            </ng-template>
+                        </li>
+
+                        <!-- Offers -->
+                        <li [ngbNavItem]="2">
+                            <button ngbNavLink>Offers</button>
+                            <ng-template ngbNavContent>
+                                <app-view-offers />
+                            </ng-template>
+                        </li>
+
+                        <!-- Other Specification if it is -->
+                        <li *ngIf="this.product.otherDetails" [ngbNavItem]="3">
+                            <button ngbNavLink>Other Specifications</button>
+                            <ng-template ngbNavContent>
+                                {{
+                                this.product.otherDetails
+                                }}
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                    <!-- Pills content -->
+                </div>
+            </div>
+
+            <!-- Simailar items section start -->
+            <div class="col-lg-4">
+                <div class="px-0 border rounded-2 shadow-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Similar Items</h5>
+                            <div class="d-flex mb-3" *ngFor="let product of this.similarItems">
+
+                                <!-- Image Similar Items -->
+                                <a routerLink="/viewproduct/{{product.details.id}}" class="me-3">
+                                    <img src={{product.images.imageAddress}} style="min-width: 96px; height: 96px;"
+                                        class=" on-hover img-md img-thumbnail" />
+                                </a>
+                                <!-- Details Similar Items Start -->
+                                <div class="info">
+                                    <div class="fw-bold ">
+
+                                        {{product.details.name}}
+                                    </div>
+
+                                    <span *ngIf="product.details.stock > 0; else elseSimilarStock">
+                                        <div *ngIf="product.details.discount > 0" class="fw-bold off-color small">
+                                            {{product.details.discount}}% OFF
+                                        </div>
+                                        <div class="fw-bold text-black">
+                                            <fa-icon [icon]="rupeeIcon" />
+                                            {{returnPrice(product.details.price, product.details.discount)}}
+                                        </div>
+                                    </span>
+                                    <ng-template #elseSimilarStock>
+                                        <h6 class="text-danger">Out Of Stock</h6>
+                                    </ng-template>
+                                </div>
+                                <!-- Details Similar Items End -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simailar items section end -->
+
+        </div>
+    </div>
+</section>

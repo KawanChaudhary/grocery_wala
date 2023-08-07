@@ -1,0 +1,13 @@
+.bg-card{
+    background-color: rgb(156, 12, 12);
+    height: 70%;
+}
+
+.img{
+    height: 150px !important;
+    width: 300px;
+    border-radius: 30px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

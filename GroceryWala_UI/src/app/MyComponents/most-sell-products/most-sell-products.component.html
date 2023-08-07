@@ -1,0 +1,129 @@
+<section class="container pt-5">
+
+    <div class="d-md-flex flex-column flex-md-row mx-2 align-items-center">
+        <div class="col-md-6">
+            <div class="heading-section font-monospace display-4 text-uppercase">
+                Most Order Products
+            </div>
+        </div>
+        <div class="d-md-flex flex-column flex-lg-row justify-content-around col-md-6">
+
+            <div class="col-md-2 col-12 ">
+                <span>
+                    <input type="month" value="2023-06" class="btn btn-white border p-1 rounded-3" #date
+                        (change)="sortByDate(date.value)">
+                </span>
+
+            </div>
+            <div class="col-md-2 col-6 ">
+                <!-- Category sorting -->
+                <div class="dropdown">
+                    <div class="btn btn-dark dropdown-toggle" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Category
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><span (click)="sortByCategory(-1)" class="dropdown-item">All</span></li>
+                        <li><span (click)="sortByCategory(cat.key)" class="dropdown-item"
+                                *ngFor="let cat of this.allCategory | keyvalue">
+                                {{cat.value}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Price sorting -->
+            </div>
+
+            <div class="col-md-2 col-6">
+
+                <div class="dropdown col-md-4 col-sm-12">
+                    <div class="btn btn-dark dropdown-toggle" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sort By
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" (click)="applySorting('Default')">Default</a></li>
+                        <li><a class="dropdown-item" (click)="applySorting('Price', 'Up')">Price Ascending</a></li>
+                        <li><a class="dropdown-item" (click)="applySorting('Price', 'Down')">Price Descending</a></li>
+                        <li><a class="dropdown-item" (click)="applySorting('Stock')">Stock</a></li>
+                        <li><a class="dropdown-item" (click)="applySorting('Qty')">Max QTY</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Table -->
+
+<div class="container-fluid bg-trasparent my-4 p-3" style="position: relative">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table align-middle table-hover mb-0">
+                    <thead class="">
+                        <tr class="text-center text-uppercase">
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Size</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>MRP</th>
+                            <th>Price</th>
+                            <th>QTY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of this.sortedData | paginate: {
+                itemsPerPage: 11,
+                currentPage: this.pagination,
+                totalItems: this.allProductsCount
+              };
+              let idx = index;" class="text-center row-hover" routerLink="/viewproduct/{{product.product.id}}">
+                            <td class="fw-bold">
+                                {{product.product.id}}
+                            </td>
+
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src={{product.imageAddress}} alt="" style="width: 45px; height: 45px"
+                                        class="rounded-2" />
+                                    <div class="ms-2">
+                                        <p class="text-black mb-0">{{[product.product.name]}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{product.product.quantity}}
+                                    {{returnSizeType(product.product.sizeType)}}</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{returnCategoryType(product.product.category)}}</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{product.product.stock}}</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{product.product.price | currency: 'INR'}}</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{returnPrice(product.product.price, product.product.discount) |
+                                    currency: 'INR'}}</p>
+                            </td>
+                            <td>
+                                <p class="mb-0">{{product.quantity}}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="this.allProductsCount > 12 || this.pagination > 1" class="d-flex justify-content-center mt-5">
+        <pagination-controls (pageChange)="renderPage($event)"></pagination-controls>
+    </div>
+</div>

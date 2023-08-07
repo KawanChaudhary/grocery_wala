@@ -1,0 +1,12 @@
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\bin\Debug\net5.0\GroceryWala.DomainLayer.deps.json
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\bin\Debug\net5.0\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\bin\Debug\net5.0\ref\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\bin\Debug\net5.0\GroceryWala.DomainLayer.pdb
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.csproj.AssemblyReference.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.AssemblyInfoInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.AssemblyInfo.cs
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.csproj.CoreCompileInputs.cache
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\ref\GroceryWala.DomainLayer.dll
+C:\Users\kawansingh\Documents\kawan-kumar-singh\Assignments\FinalTest\DomainLayer\obj\Debug\net5.0\GroceryWala.DomainLayer.pdb

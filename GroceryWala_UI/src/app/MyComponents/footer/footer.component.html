@@ -1,0 +1,73 @@
+<footer class="footer-48201 pt-5 pb-3">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 pr-md-5">
+                <a routerLink="/" class="footer-site-logo d-block mb-4 fw-bold text-uppercase text-warning">Grocery Wala.</a>
+                <p class="text-light">Freshness delivered to your doorstep. Quality products, unbeatable prices. Your one-stop shop for
+                    all your grocery needs. Making grocery shopping convenient, affordable, and delightful. Experience
+                    the difference at our grocery store today!</p>
+            </div>
+            <div class="col-md">
+                <ul class="list-unstyled nav-links" *ngFor="let cat of this.allCategory | keyvalue">
+                    <li *ngIf="+cat.key > 3">
+                        <a routerLink="/viewcategory/{{cat.key}}">{{cat.value}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md">
+                <ul class="list-unstyled nav-links pt-0 mt-0" *ngFor="let cat of this.allCategory | keyvalue">
+                    <li *ngIf="+cat.key < 4">
+                        <a routerLink="/viewcategory/{{cat.key}}">{{cat.value}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md">
+                <ul class="list-unstyled nav-links">
+                    <li><a routerLink="/">Home</a></li>
+                    <li><a routerLink="/">Terms &amp; Conditions</a></li>
+                    <li><a routerLink="/">About Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md text-md-center">
+                <ul class="social list-unstyled">
+                    <li><a href="#"><fa-icon class="me-3 " [icon]="instaIcon" /></a></li>
+                    <li><a href="#"><fa-icon class="me-3" [icon]="facebookIcon" /></a></li>
+                    <li><a href="#"><fa-icon class="me-3" [icon]="twitterIcon" /></a></li>
+                    <li><a href="#"><fa-icon class="me-3" [icon]="pinterestIcon" /></a></li>
+                </ul>
+                <ul class="list-unstyled quick-info mb-4">
+                    <li>
+                        <a href="#" class="d-flex align-items-center text-white">
+                            <fa-icon class="icon me-3" [icon]="phoneIcon" />
+                            +91 965 0045 886
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="d-flex align-items-center text-white">
+                            <fa-icon class="icon me-3" [icon]="enevelopeIcon" />
+                            kawanchaudhary@gmail.com
+                        </a>
+                    </li>
+                </ul>
+<!-- 
+                <form action="#" class="subscribe d-flex justify-content-center">
+                    <input type="text" class="form-control" placeholder="Enter e-mail">
+                    <button type="submit" class="btn btn-warning ms-1">
+                        <fa-icon class="footer-icon fw-bold" [icon]="submitIcon" />
+                    </button>
+                </form> -->
+            </div>
+
+        </div>
+
+        <div class="row ">
+            <div class="col-12 text-center">
+                <div class="copyright mt-5 pt-5">
+                    <p><small>&copy; 2022-2023 All Rights Reserved.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>

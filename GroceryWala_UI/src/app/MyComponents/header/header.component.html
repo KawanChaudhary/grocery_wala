@@ -1,0 +1,125 @@
+<header class="bg-black ">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+
+
+            <a class="navbar-brand d-flex align-items-center mb-2 mb-lg-0  text-decoration-none" routerLink="/">
+                <img id="logo" src="./../../../assets/vegetable.png">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto mb-2 justify-content-center align-items-center mb-md-0">
+                <li>
+                    <a routerLink="/" class="nav-link px-2  menu-item">Home</a>
+                </li>
+
+                <!-- Mega Menu Start -->
+
+                <li class="nav-item dropdown dropdown-hover position-static">
+                    <a class="nav-link dropdown-toggle  menu-item" id="navbarDropdown" role="button"
+                        data-mdb-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <!-- Dropdown menu -->
+                    <div class="dropdown-menu mt-0 border rounded-4" aria-labelledby="navbarDropdown">
+
+
+                        <div class="container">
+                            <div class="row my-1">
+                                <div class="col-md-12 col-lg-12 mb-3 mb-lg-0">
+
+                                    <!-- <h5 class="text-center font-monospace text-danger">Categories</h5> -->
+
+                                    <div class="list-group list-group-flush" *ngFor="let cat of allCategory | keyvalue">
+                                        <a routerLink="/viewcategory/{{Number(cat.key)}}"
+                                            class="font-monospace list-group-item list-group-item-action on-hover">
+                                            {{cat.value}}
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Mega Menu End -->
+                <li>
+                    <a routerLink="/" class="nav-link px-2  menu-item">About</a>
+                </li>
+            </ul>
+
+            <form class="col-12 col-lg-4 col-md-12 col-xl-6 mb-3 mb-lg-0">
+                <app-search-bar />
+            </form>
+
+            <div *ngIf="anyUserAvailable() == false; else elseBlock" class="text-end">
+                <button routerLink="/signin" type="button" class="btn btn-outline-light me-2">Sign In</button>
+                <button routerLink="/signup" type="button" class="btn btn-warning">Sign Up</button>
+            </div>
+            <ng-template #elseBlock>
+
+                <div class="dropdown text-end user-icon">
+                    <a class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../../../assets/images/Other/user.jpg" alt="mdo" width="32" height="32"
+                            class="user-icon rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu text-small px-1" aria-labelledby="dropdownUser1">
+                        <li>
+                            <h5 class="dropdown-item font-monospace fw-bold hi-user">Hi {{this.user.firstName}}</h5>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a routerLink="/myorders/{{this.user.id}}" class="dropdown-item font-monospace on-hover"
+                                href="#">My Orders</a></li>
+
+                        <li><a class="dropdown-item font-monospace on-hover" routerLink="/viewcart/{{this.user.id}}">My
+                                Cart</a></li>
+
+
+                        <span *ngIf="this.user.isAdmin">
+
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <!-- Admin Options Start -->
+
+                            <li><a routerLink="/addnewproduct/{{this.user.id}}/{{this.user.isAdmin}}"
+                                    *ngIf="this.user.isAdmin" class="dropdown-item font-monospace on-hover">
+                                    Add New Product
+                                </a></li>
+                            <li><a routerLink="/allproducts/{{this.user.id}}/{{this.user.isAdmin}}"
+                                    *ngIf="this.user.isAdmin" class="dropdown-item font-monospace on-hover">
+                                    All Products
+                                </a></li>
+                            <li><a routerLink="/allorders/{{this.user.id}}/{{this.user.isAdmin}}"
+                                    *ngIf="this.user.isAdmin" class="dropdown-item font-monospace on-hover">
+                                    All Orders
+                                </a></li>
+                            <li><a routerLink="/mostsellproducts/{{this.user.id}}/{{this.user.isAdmin}}" *ngIf="this.user.isAdmin"
+                                    class="dropdown-item font-monospace on-hover">
+                                    Most Order Products
+                                </a></li>
+
+                            <!-- Admin options end -->
+
+                        </span>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li><a (click)="signOut()" class="dropdown-item font-monospace on-hover sign-out" href="#">
+                                Sign Out
+                                <fa-icon [icon]="signOutIcon" />
+                            </a></li>
+                    </ul>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</header>
